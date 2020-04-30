@@ -85,12 +85,12 @@ client.on(`message`, message => {
             return message.channel.send(`https://cdn.plasmainc.xyz/QSI_facts.mp4`)
         }
         if (message.content.toLowerCase().includes(`say`)) {
-            let message = args.slice(1).join(` `);
-            if (!message) {
+            let m = args.slice(1).join(` `);
+            if (!m) {
                 return message.channel.send(`Fuck you!`)
             } else {
                 message.delete()
-                return message.channel.send(message);
+                return message.channel.send(m);
             }
         }
         if (message.content.toLowerCase().includes(`eval`)) {
