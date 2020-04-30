@@ -22,13 +22,13 @@ setInterval(() => {
                     if (body.memberCount > body2.memberCount) {
                         client.channels.cache.get(`705065482780409895`).send(`${config.plasma} **PLASMA HAS SUCCESSFULLY OVERTAKEN QUANTUM SCIENCE!** ${config.plasma}\n\n**Plasma Inc:** ${body.memberCount}\n**Quantum Science:** ${body2.memberCount}\n**Difference:** ${body.memberCount - body2.memberCount}\n\n*${client.user.tag} will go offline shortly.*\n||@everyone||`);
                         client.channels.cache.get(`701768530697125970`).send(`⚠️ **WARNING:** Killswitch is now active!`)
-                        return process.exit(0);
+
                     } else {
                         client.channels.cache.get(`705065482780409895`).send(`${config.plasma} \`${body.memberCount}\`\n${config.qs} \`${body2.memberCount}\`\n\n**Difference:** ${body2.memberCount - body.memberCount}`)
                     }
                 })
         })
-}, 300000)
+}, 5000)
 
 client.on(`message`, message => {
     if (message.author.bot == true) return;
