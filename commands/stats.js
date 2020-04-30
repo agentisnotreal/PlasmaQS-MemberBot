@@ -6,6 +6,7 @@ module.exports = class stats {
             this.permlevel = 1
     }
     run(client, message, args) {
+        const Discord = require(`discord.js`)
         let totalSeconds = (client.uptime / 1000);
         let days = Math.floor(totalSeconds / 86400);
         let hours = Math.floor(totalSeconds / 3600);
@@ -19,6 +20,6 @@ module.exports = class stats {
             .setDescription(`**Ping:** \`0ms\`\n**Uptime:** \`100%\`\n**Lines of Diamond-era code:** \`0\``)
             .addField(`**Actual Stats**`, `**Ping:** \`${client.ws.ping}ms\`\n**Uptime:** ${uptime}`)
             .setFooter(`Powered by a heavily modified but totally not Discord.js`)
-
+            return message.channelsend(coolshit)
     }
 }
