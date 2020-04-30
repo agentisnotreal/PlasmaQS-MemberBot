@@ -36,7 +36,7 @@ client.on(`ready`, () => {
             if (!body2) return;
 
             let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n${qs} **Quantum Science:** \`${body2.memberCount}\`\n\n**Difference:** \`${body.memberCount - body2.memberCount}\`\n**----------**`;
-            let memberlogs = client.channels.cache.get(`678578528630865941`)
+            let memberlogs = client.channels.cache.get(`705065482780409895`)
 
             memberlogs.send(message)
           })
