@@ -3,7 +3,6 @@ const Discord = require(`discord.js`);
 
 // Imports
 const { client } = require(`../index`);
-const { db } = require(`../index`);
 const config = require(`../config.json`);
 
 client.on("message", message => {
