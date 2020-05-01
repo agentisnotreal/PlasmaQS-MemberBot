@@ -22,7 +22,7 @@ class CommandHandler {
         const commands = new Map();
         const aliases = new Map();
 
-        logger(`green`, `Mainframe has successfully loaded. Commencing startup sequence now.\n`)
+        logger(`
 
         const files = fs.readdirSync(folder);
         files.filter(f => fs.statSync(folder + f).isDirectory())
