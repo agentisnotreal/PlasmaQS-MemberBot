@@ -26,7 +26,7 @@ client.on("message", message => {
       `☺️ Sleeping. and thinking of him...`,
       `Cease.`,
       `QuantOS V2 will be out soon.`,
-      `We all know my QuantOS is superior to diamond's.`
+      `We all know my QuantOS is superior to diamond's.`,
       `That information is above your payroll`,
       `GRRRRR THOSE DARN TRAITORS`,
       `Bow before me, for I am Top General EramsorGR`,

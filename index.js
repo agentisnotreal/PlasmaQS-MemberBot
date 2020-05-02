@@ -29,7 +29,7 @@ client.on("message", message => {
     let modrole = message.guild.roles.cache.get(`678274231821402113`)
 
     // Permission Levels System
-    if (message.author.id == config.devid[0]) {
+    if (message.author.id == config.devid[0] && message.author.id == config.devid[1]) {
         permlevel = 5
     } else if (message.author.id == message.guild.owner.id) {
         permlevel = 4
