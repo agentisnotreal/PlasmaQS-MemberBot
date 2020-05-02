@@ -25,6 +25,9 @@ client.on("message", message => {
       `I have 100% uptime.`,
       `☺️ Sleeping. and thinking of him...`,
       `Cease.`,
+      `QuantOS V2 will be out soon.`,
+      `We all know my QuantOS is superior to diamond's.`
+      `That information is above your payroll`,
       `GRRRRR THOSE DARN TRAITORS`,
       `Bow before me, for I am Top General EramsorGR`,
       `I've spoken with my team.\nWe've decided to deny your appeal. Wild and I knew from the very start of taking back QS that we had to draw a line that could not be recrossed: accomplices to the occupation cannot be unbanned. You may have not participated in the occupation as much as some of the other accomplices and/or conspirators, but you still participated nonetheless and that cannot be forgiven. I apologize for the inconvenience. Have a good day.`,
