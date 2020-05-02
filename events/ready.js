@@ -30,15 +30,38 @@ client.on(`ready`, () => {
       .then(res => res.json()).then(body => {
 
         if (!body) return;
-        fetch(`https://groups.roblox.com/v1/groups/2847031`)
+
+        fetch(`https://games.roblox.com/v1/games/3657848528/servers/Public?sortOrder=Asc&limit=100`)
           .then(res => res.json()).then(body2 => {
 
             if (!body2) return;
 
-            let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n${qs} **Quantum Science:** \`${body2.memberCount}\`\n\n**Difference:** \`${body.memberCount - body2.memberCount}\`\n**----------**`;
-            let memberlogs = client.channels.cache.get(`705065482780409895`)
+            let bhnpsPlaying = 0;
+            body2.data.forEach(function (r) {
+              bhnpsPlaying = r.playing + bhnpsPlaying
+            })
 
-            memberlogs.send(message)
+            fetch(`https://groups.roblox.com/v1/groups/2847031`)
+              .then(res => res.json()).then(body3 => {
+
+                if (!body3) return;
+
+                fetch(`https://games.roblox.com/v1/games/3039795291/servers/Public?sortOrder=Asc&limit=100`)
+                  .then(res => res.json()).then(body4 => {
+
+                    if (!body4) return;
+
+                    let qserfPlaying = 0;
+                    body4.data.forEach(function (r) {
+                      qserfPlaying = r.playing + qserfPlaying
+                    })
+
+                    let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:**\`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
+                    let memberlogs = client.channels.cache.get(`705065482780409895`)
+
+                    memberlogs.send(message)
+                  })
+              })
           })
       })
   }, 300000)

@@ -22,8 +22,6 @@ class CommandHandler {
         const commands = new Map();
         const aliases = new Map();
 
-        logger(`
-
         const files = fs.readdirSync(folder);
         files.filter(f => fs.statSync(folder + f).isDirectory())
             .forEach(nested => fs.readdirSync(folder + nested).forEach(f => files.push(nested + '/' + f)));

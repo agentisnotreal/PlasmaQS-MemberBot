@@ -9,7 +9,6 @@ const config = require(`./config.json`);
 
 // SAGe Modules
 require(`./modules/EventHandler`)(client);
-require(`./modules/functions`)(client);
 require(`./modules/logger`)(client);
 require(`./modules/emoji`)(client);
 
