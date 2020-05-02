@@ -20,6 +20,6 @@ module.exports = class stats {
             .setDescription(`**Ping:** \`0ms\`\n**Uptime:** \`100%\`\n**Lines of Diamond-era code:** \`0\``)
             .addField(`**Actual Stats**`, `**Ping:** \`${client.ws.ping}ms\`\n**Uptime:** ${uptime}`)
             .setFooter(`Powered by a heavily modified but totally not Discord.js`)
-            return message.channelsend(coolshit)
+            return message.channel.send(coolshit)
     }
 }
