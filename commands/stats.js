@@ -5,15 +5,14 @@ module.exports = class stats {
             this.usage = `stats`,
             this.permlevel = 1
     }
-    run(client, message, args) {
+    run(client, message, args, config) {
         const Discord = require(`discord.js`)
         let totalSeconds = (client.uptime / 1000);
-        let days = Math.floor(totalSeconds / 86400);
         let hours = Math.floor(totalSeconds / 3600);
         totalSeconds %= 3600;
         let minutes = Math.floor(totalSeconds / 60);
         let seconds = totalSeconds % 60;
-        let uptime = `\`${days}\` days, \`${hours}\` hours, \`${minutes}\` minutes and \`${Math.round(seconds)}\` seconds`;
+        let uptime = `\`${hours}\` hours, \`${minutes}\` minutes and \`${Math.round(seconds)}\` seconds`;
 
         let coolshit = new Discord.MessageEmbed()
             .setAuthor(`Statistics`, client.user.avatarURL())

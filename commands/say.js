@@ -6,7 +6,7 @@ module.exports = class say {
             this.usage = 'say [content]'
         this.permlevel = 1
     }
-    run(client, message, args, db) {
+    run(client, message, args, config) {
         let content = args.slice(1).join(` `)
         if (!content) {
             return message.channel.send(`What the fuck am I supposed to send?`)

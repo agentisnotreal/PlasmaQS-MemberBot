@@ -5,7 +5,7 @@ module.exports = class ping {
             this.usage = `ping`,
             this.permlevel = 1
     }
-    run(client, message, args) {
+    run(client, message, args, config) {
         return message.channel.send(`I can tell you one thing about my ping. It's better than the #donothingdiamond's QUANTos.`)
     }
 }

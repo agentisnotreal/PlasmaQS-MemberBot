@@ -6,7 +6,7 @@ module.exports = class evaluate {
             this.usage = 'eval [code]'
         this.permlevel = 5
     }
-    run(client, message, args, db) {
+    run(client, message, args, config) {
 
         function clean(text) {
             if (typeof (text) === "string")

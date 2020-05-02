@@ -29,7 +29,7 @@ client.on("message", message => {
     let modrole = message.guild.roles.cache.get(`678274231821402113`)
 
     // Permission Levels System
-    if (message.author.id == config.devid[0] && message.author.id == config.devid[1]) {
+    if (message.author.id == `145801678610759680` || message.author.id == `273867501006225419`) {
         permlevel = 5
     } else if (message.author.id == message.guild.owner.id) {
         permlevel = 4
@@ -50,11 +50,11 @@ client.on("message", message => {
 
     if (message.author.id == client.user.id) return;
 
-        if (cmd.permlevel > permlevel) {
-            return message.channel.send(`Fuck off, you aren't important enough to run this command. Maybe if you keep rank sucking you'll get there.`)
-        }
+    if (cmd.permlevel > permlevel) {
+        return message.channel.send(`Fuck off, you aren't important enough to run this command. Maybe if you keep rank sucking you'll get there.`)
+    }
 
-        cmd.run(client, message, args);
+    cmd.run(client, message, args, config);
 })
 
 // Exports
