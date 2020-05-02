@@ -1,6 +1,5 @@
 // Node Modules
 const Discord = require("discord.js");
-const noblox = require(`noblox.js`)
 
 // Discord Bot
 const client = new Discord.Client();

@@ -3,7 +3,6 @@ const Discord = require(`discord.js`);
 
 // Imports
 const { client } = require(`../index`);
-const { db } = require(`../index`);
 const config = require(`../config.json`);
 
 client.on("message", message => {
@@ -25,6 +24,7 @@ client.on("message", message => {
       `My lawyers are on speed dial!`,
       `I have 100% uptime.`,
       `☺️ Sleeping. and thinking of him...`,
+      `Cease.`,
       `GRRRRR THOSE DARN TRAITORS`,
       `Bow before me, for I am Top General EramsorGR`,
       `I've spoken with my team.\nWe've decided to deny your appeal. Wild and I knew from the very start of taking back QS that we had to draw a line that could not be recrossed: accomplices to the occupation cannot be unbanned. You may have not participated in the occupation as much as some of the other accomplices and/or conspirators, but you still participated nonetheless and that cannot be forgiven. I apologize for the inconvenience. Have a good day.`,
