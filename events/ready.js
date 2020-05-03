@@ -7,9 +7,11 @@ const { client } = require(`../index`);
 
 // Activities List
 let activities = [
-  "my 100% Uptime™️ metrics.",
-  "for traitors.",
-  "my kinky chamber."
+  "my 100% Uptime™️ metrics",
+  "for traitors",
+  "my kinky chamber",
+  "for Diamond's code",
+  "for raids"
 ];
 
 
