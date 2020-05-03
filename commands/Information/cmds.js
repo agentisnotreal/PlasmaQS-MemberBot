@@ -10,7 +10,8 @@ module.exports = class cmds {
 
         const cmdembed = new Discord.MessageEmbed()
             .setAuthor(`Commands`, client.user.avatarURL())
-            .setDescription('`cmds`, `currentinfo` `eval`, `ping`, `rbinfo`, `say`, `stats`, `uptime`, `yesoryes`')
+            .addField(`Fun`, '`cat`, `dog`, `donate`, `say`, `slut`')
+            .addField(`Information`, '`cmds`, `currentinfo`, `ping`, `rbinfo`, `stats`, `uptime`, `yesoryes`')
             .setFooter(`Powered by a heavily modified but totally not Discord.js`);
         return message.channel.send(cmdembed)
     }
