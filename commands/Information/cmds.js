@@ -12,6 +12,7 @@ module.exports = class cmds {
             .setAuthor(`Commands`, client.user.avatarURL())
             .addField(`Fun`, '`cat`, `dog`, `donate`, `say`, `slut`')
             .addField(`Information`, '`cmds`, `currentinfo`, `ping`, `rbinfo`, `stats`, `uptime`, `yesoryes`')
+            .addField(`Other`, '`banritual`, `eval`')
             .setFooter(`Powered by a heavily modified but totally not Discord.js`);
         return message.channel.send(cmdembed)
     }
