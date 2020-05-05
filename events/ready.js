@@ -39,9 +39,14 @@ client.on(`ready`, () => {
             if (!body2) return;
 
             let bhnpsPlaying = 0;
-            body2.data.forEach(function (r) {
-              bhnpsPlaying = r.playing + bhnpsPlaying
-            })
+
+            if (body.data2 == []) {
+              bhnpsPlaying = 0;
+            } else {
+              body2.data.forEach(function (r) {
+                bhnpsPlaying = r.playing + bhnpsPlaying
+              })
+            }
 
             fetch(`https://groups.roblox.com/v1/groups/2847031`)
               .then(res => res.json()).then(body3 => {
@@ -54,11 +59,16 @@ client.on(`ready`, () => {
                     if (!body4) return;
 
                     let qserfPlaying = 0;
-                    body4.data.forEach(function (r) {
-                      qserfPlaying = r.playing + qserfPlaying
-                    })
 
-                    let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:**\`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
+                    if (body.data4 == []) {
+                      qserfPlaying = 0;
+                    } else {
+                      body4.data.forEach(function (r) {
+                        qserfPlaying = r.playing + qserfPlaying
+                      })
+                    }
+
+                    let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
                     let memberlogs = client.channels.cache.get(`705065482780409895`)
 
                     memberlogs.send(message)
