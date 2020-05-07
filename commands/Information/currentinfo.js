@@ -1,7 +1,7 @@
 module.exports = class currentinfo {
     constructor() {
         this.name = `currentinfo`,
-            this.alias = [],
+            this.alias = [`ci`, `cinfo`],
             this.usage = `currentinfo`,
             this.permlevel = 1
     }

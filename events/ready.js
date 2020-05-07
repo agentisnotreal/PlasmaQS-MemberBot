@@ -40,7 +40,7 @@ client.on(`ready`, () => {
 
             let bhnpsPlaying = 0;
 
-            if (body.data2 == []) {
+            if (body2.data == []) {
               bhnpsPlaying = 0;
             } else {
               body2.data.forEach(function (r) {
@@ -60,7 +60,7 @@ client.on(`ready`, () => {
 
                     let qserfPlaying = 0;
 
-                    if (body.data4 == []) {
+                    if (body4.data == []) {
                       qserfPlaying = 0;
                     } else {
                       body4.data.forEach(function (r) {
@@ -68,7 +68,7 @@ client.on(`ready`, () => {
                       })
                     }
 
-                    let message = `**----------**\n${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
+                    let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
                     let memberlogs = client.channels.cache.get(`705065482780409895`)
 
                     memberlogs.send(message)
