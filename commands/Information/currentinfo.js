@@ -43,7 +43,7 @@ module.exports = class currentinfo {
                                             .setAuthor(`Current Group Stats for lazy people`, client.user.avatarURL({ size: 2048, type: "png" }))
                                             .addField(`${plasma} Plasma Inc`, `Group: \`${body.memberCount}\`\nBHNPS: \`${bhnpsPlaying}\``)
                                             .addField(`${qs} Quantum Science Inc`, `Group: \`${body3.memberCount}\`\nQSERF: \`${qserfPlaying}\``)
-                                            .setFooter(`Difference: ${body.memberCount - body3.memberCount} | ${bhnpsPlaying - qserfPlaying}`)
+                                            .setFooter(`Difference: ${body3.memberCount - body.memberCount} | ${qserfPlaying - bhnpsPlaying} | well it's all gone to shit`)
 
                                         return message.channel.send(info)
                                     })

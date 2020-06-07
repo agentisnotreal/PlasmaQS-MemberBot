@@ -58,7 +58,11 @@ client.on(`ready`, () => {
                       qserfPlaying = r.playing + qserfPlaying
                     })
 
-                    let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`\n  ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`\n  ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`\nGame: \`${bhnpsPlaying - qserfPlaying}\`\n**----------**`;
+                    let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`
+↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`
+↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`
+Game: \`${qserfPlaying - bhnpsPlaying}\`
+**----------**`;
                     let memberlogs = client.channels.cache.get(`705065482780409895`)
 
                     memberlogs.send(message)
