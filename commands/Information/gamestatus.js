@@ -74,7 +74,11 @@ module.exports = class gamestatus {
                                         }
                                         let info = new Discord.MessageEmbed()
                                             .setAuthor(`Game Statistics`, client.user.avatarURL({ size: 2048, type: "png" }))
-                                            .setDescription(`**[II]** IIS: ${iisPlaying}\n**[PB]** PBCC: ${pbccPlaying}\n**[PI]** BHNPS: ${bhnpsPlaying}\n**[QS]** QSERF: ${qserfPlaying}`)
+                                            .setDescription(`**[PB]** PBCC: ${pbccPlaying}
+**[QS]** QSERF: ${qserfPlaying}
+**[II]** IIS: ${iisPlaying}
+**[PI]** BHNPS: ${bhnpsPlaying}
+`)
                                             .setFooter(`Total users playing: ${iisPlaying + pbccPlaying + bhnpsPlaying + qserfPlaying}`)
 
                                         return message.channel.send(info)
