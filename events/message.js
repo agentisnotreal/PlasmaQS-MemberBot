@@ -40,7 +40,8 @@ client.on("message", message => {
       `fucking ass developer`,
       `> Eat my ass\nInteresting offer`,
       `We’ve removed all of the diamond-era code`,
-      `Kiddo I couldn't care more about you, QSTF or anyone inside it, if you really think I would really spend time and brain capacity to create spy accounts, and "infiltrate" your servers, then boy you have some trust issues with your friends. I've moved on from QSTF the day I left it to join QAC. QSTF is no longer a thing, so I suggest you to move on as well.\n\nIf would like to appeal your ban do so in QOC- oh wait you did appeal for it and then deleted it and left..? Well not my issue anymore!\nI don't care if you have my face or my name, they are no secret, and you using it to make feel scared shows your level as a person. I am ashamed for your "friends" being your "friends", probably because you are going to pull something like this to them.`
+      `Kiddo I couldn't care more about you, QSTF or anyone inside it, if you really think I would really spend time and brain capacity to create spy accounts, and "infiltrate" your servers, then boy you have some trust issues with your friends. I've moved on from QSTF the day I left it to join QAC. QSTF is no longer a thing, so I suggest you to move on as well.\n\nIf would like to appeal your ban do so in QOC- oh wait you did appeal for it and then deleted it and left..? Well not my issue anymore!\nI don't care if you have my face or my name, they are no secret, and you using it to make feel scared shows your level as a person. I am ashamed for your "friends" being your "friends", probably because you are going to pull something like this to them.`,
+      `> qs can suck my hypothetical sausage\nInteresting offer`
     ]
     let e = Math.floor((Math.random() * options.length));
     return message.channel.send(options[e])

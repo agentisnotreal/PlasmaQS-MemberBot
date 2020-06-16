@@ -60,7 +60,7 @@ client.on(`ready`, () => {
 
                     let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`
 ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`
-↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body.memberCount - body3.memberCount}\`
+↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body3.memberCount - body.memberCount}\`
 Game: \`${qserfPlaying - bhnpsPlaying}\`
 **----------**`;
                     let memberlogs = client.channels.cache.get(`705065482780409895`)
