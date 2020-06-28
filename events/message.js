@@ -35,13 +35,22 @@ client.on("message", message => {
       'Cease this topic,',
       'I bet I get payed more than you',
       `Bow before me, for I am Top General EramsorGR`,
-      `I've spoken with my team.\nWe've decided to deny your appeal. Wild and I knew from the very start of taking back QS that we had to draw a line that could not be recrossed: accomplices to the occupation cannot be unbanned. You may have not participated in the occupation as much as some of the other accomplices and/or conspirators, but you still participated nonetheless and that cannot be forgiven. I apologize for the inconvenience. Have a good day.`,
+      `I've spoken with my team.
+We've decided to deny your appeal. Wild and I knew from the very start of taking back QS that we had to draw a line that could not be recrossed: accomplices to the occupation cannot be unbanned. You may have not participated in the occupation as much as some of the other accomplices and/or conspirators, but you still participated nonetheless and that cannot be forgiven. I apologize for the inconvenience. Have a good day.`,
       `It will be a slice of cake to remake your panel`,
       `fucking ass developer`,
-      `> Eat my ass\nInteresting offer`,
+      `> Eat my ass
+Interesting offer`,
       `We’ve removed all of the diamond-era code`,
-      `Kiddo I couldn't care more about you, QSTF or anyone inside it, if you really think I would really spend time and brain capacity to create spy accounts, and "infiltrate" your servers, then boy you have some trust issues with your friends. I've moved on from QSTF the day I left it to join QAC. QSTF is no longer a thing, so I suggest you to move on as well.\n\nIf would like to appeal your ban do so in QOC- oh wait you did appeal for it and then deleted it and left..? Well not my issue anymore!\nI don't care if you have my face or my name, they are no secret, and you using it to make feel scared shows your level as a person. I am ashamed for your "friends" being your "friends", probably because you are going to pull something like this to them.`,
-      `> qs can suck my hypothetical sausage\nInteresting offer`
+      `Kiddo I couldn't care more about you, QSTF or anyone inside it, if you really think I would really spend time and brain capacity to create spy accounts, and "infiltrate" your servers, then boy you have some trust issues with your friends. I've moved on from QSTF the day I left it to join QAC. QSTF is no longer a thing, so I suggest you to move on as well.\n
+      If would like to appeal your ban do so in QOC- oh wait you did appeal for it and then deleted it and left..? Well not my issue anymore!
+      I don't care if you have my face or my name, they are no secret, and you using it to make feel scared shows your level as a person. I am ashamed for your "friends" being your "friends", probably because you are going to pull something like this to them.`,
+      `> qs can suck my hypothetical sausage
+  Interesting offer`,
+  `You have been suspended by the QSI, QAC and QSST for violating clause five of the new administration rules, rule one in the old rules.\n
+Due to an ongoing case on you by QIAD, your suspension time is unset and currently indefinite. 
+Your suspension time will be updated soon. If you have any objections state them now and await for an answer.\n 
+~EramsorGR, Director Of SST`
     ]
     let e = Math.floor((Math.random() * options.length));
     return message.channel.send(options[e])
