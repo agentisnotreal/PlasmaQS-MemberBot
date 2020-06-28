@@ -47,7 +47,7 @@ Interesting offer`,
       I don't care if you have my face or my name, they are no secret, and you using it to make feel scared shows your level as a person. I am ashamed for your "friends" being your "friends", probably because you are going to pull something like this to them.`,
       `> qs can suck my hypothetical sausage
   Interesting offer`,
-  `You have been suspended by the QSI, QAC and QSST for violating clause five of the new administration rules, rule one in the old rules.\n
+      `You have been suspended by the QSI, QAC and QSST for violating clause five of the new administration rules, rule one in the old rules.\n
 Due to an ongoing case on you by QIAD, your suspension time is unset and currently indefinite. 
 Your suspension time will be updated soon. If you have any objections state them now and await for an answer.\n 
 ~EramsorGR, Director Of SST`
