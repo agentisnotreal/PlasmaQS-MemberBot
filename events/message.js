@@ -2,14 +2,30 @@
 const Discord = require(`discord.js`);
 
 // Imports
-const { client } = require(`../index`);
+const { client, database } = require(`../index`);
 const config = require(`../config.json`);
 
-client.on("message", message => {
+client.on("message", async message => {
 
   // Check if message is in a DM or author is a bot
   if (message.channel.type == `dm`) return;
   if (message.author.bot == true) return;
+
+  reactioncruncher(message)
+
+  async function reactioncruncher(message) {
+    database.create({
+      id: message.id,
+      waitfor: 360000
+    })
+
+    async function deleter(message) {
+      await database.destroy({where: {id: message.id}});
+    }
+
+    setTimeout(function () { deleter(message) }, 360000)
+
+  }
 
   if (message.mentions.has(client.user)) {
 

@@ -3,7 +3,7 @@ const config = require(`../config.json`)
 const fetch = require(`node-fetch`)
 
 // Imports
-const { client } = require(`../index`);
+const { client,database } = require(`../index`);
 
 // Activities List
 let activities = [
@@ -19,7 +19,8 @@ client.on(`ready`, () => {
 
   // Ready Sequence
   logger.plain(`cyan`, `NaaguBot ${config.version}`)
-  logger.plain(`cyan`, `Naagu is ready to take over the world!`)
+  logger.plain(`cyan`, `Naagu is ready to take over the world!`);
+  database.sync();
   client.user.setStatus(`online`)
 
   setInterval(() => {

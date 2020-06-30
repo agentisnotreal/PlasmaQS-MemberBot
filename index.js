@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 
 // Discord Bot
 const client = new Discord.Client();
+const Sequelize = require("sequelize");
 
 // Configuration File
 const config = require(`./config.json`);
@@ -57,10 +58,29 @@ client.on("message", message => {
     cmd.run(client, message, args, config);
 })
 
+const sequelize = new Sequelize('database', 'user', 'password', {
+    host: 'localhost',
+    dialect: 'sqlite',
+    storage: 'database.sqlite',
+    logging: false,
+});
+
+const database = sequelize.define("starboard", {
+    id: {
+        type: Sequelize.STRING,
+        unique: true,
+        primaryKey: true
+    },
+    waitfor: {
+        type: Sequelize.INTEGER
+    }
+})
+
 // Exports
 module.exports = {
     CH: CH,
     client: client,
+    database: database
 }
 // Login System
 client.login(config.token);
