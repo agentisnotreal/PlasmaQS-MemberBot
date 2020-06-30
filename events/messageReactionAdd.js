@@ -8,8 +8,6 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
 
     let channel = messageReaction.message.guild.channels.cache.find(x => x.name === "starboard");
 
-    messageReaction.remove(user);
-
     if (messageReaction.count >= 2 && messageReaction.emoji.name == "⭐") {
         let embed = new MessageEmbed()
             .setColor("#ffc83d")
