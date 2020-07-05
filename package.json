@@ -1,13 +1,13 @@
 {
-  "name": "plasmaqs-membertracker-bot",
+  "name": "plasmaqs-memberbot",
   "version": "1.0.0",
   "description": "Tracks QS and Plasma member count.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "agentisnotreal",
-  "license": "ISC",
+  "author": "agentisnotreal#1090",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^12.2.0",
     "noblox.js": "^4.5.6",
@@ -16,5 +16,13 @@
     "sqlite3": "^4.2.0",
     "time-stamp": "^2.2.0",
     "util": "^0.12.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentisnotreal/PlasmaQS-MemberBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/agentisnotreal/PlasmaQS-MemberBot/issues"
+  },
+  "homepage": "https://github.com/agentisnotreal/PlasmaQS-MemberBot#readme"
 }
