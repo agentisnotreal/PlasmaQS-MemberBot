@@ -31,12 +31,19 @@ Create a `config.json` file with this inside:
   "version": "this really doesn't matter"
 }
 ```
+To install the required libraries, run (in the direrctory of the bot):
+```bash
+npm i
+```
+Once you're done, run `node index.js` and (assumming you've made changes to the code to prevent the bot from having a moment) the bot will go live!
 
 ## credits
 
-**Cajess, EramsorGR, NSDoppler, Hurrah123456, TheWildDeveloper** - These quotes would not have existed without you.
+**Cajess, EramsorGR, Hurrah123456, NSDoppler, TheWildDeveloper** - These quotes would not have existed without you.
 
 **alexoct, TheCakeChicken** - Provided me with quotes
+
+**sgtxd** - Made the starboard module (not originally included in this)
 
 **Terry** is cool
 
