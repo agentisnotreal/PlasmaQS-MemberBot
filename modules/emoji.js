@@ -1,5 +1,3 @@
-//APEX SAFEGUARD MODULES - EMOJIS
-
 module.exports = client => {
 
     global.plasma = `<:plasma:705065113627000902>`

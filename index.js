@@ -8,7 +8,7 @@ const Sequelize = require("sequelize");
 // Configuration File
 const config = require(`./config.json`);
 
-// SAGe Modules
+// Modules
 require(`./modules/EventHandler`)(client);
 require(`./modules/logger`)(client);
 require(`./modules/emoji`)(client);
