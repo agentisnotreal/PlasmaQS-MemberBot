@@ -51,6 +51,9 @@ class CommandHandler {
         logger(`green`, `All commands have loaded Successfully. Now loading events.\n`);
         this.commands = commands;
         this.aliases = aliases;
+        module.exports = {
+            commands: commands
+        }
     }
 
     getCommand(pfx, string) {

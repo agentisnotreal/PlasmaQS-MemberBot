@@ -7,12 +7,16 @@ module.exports = class cmds {
     }
     run(client, message, args, config) {
         const Discord = require(`discord.js`);
+        let CH = require("../../modules/CommandHandler");
+        let cmdmap = CH.commands;
+
+        let cmds = new Array();
+        cmdmap.forEach(cmd => cmds.push(`\`${cmd.name}\``));
+        
 
         const cmdembed = new Discord.MessageEmbed()
             .setAuthor(`Commands`, client.user.avatarURL())
-            .addField(`Fun`, '`cat`, `dog`, `donate`, `say`, `slut`')
-            .addField(`Information`, '`cmds`, `currentinfo`, `ping`, `rbinfo`, `stats`, `uptime`, `yesoryes`')
-            .addField(`Other`, '`banritual`, `eval`')
+            .setDescription(cmds.join(", "))
             .setFooter(`Powered by a heavily modified but totally not Discord.js`);
         return message.channel.send(cmdembed)
     }
