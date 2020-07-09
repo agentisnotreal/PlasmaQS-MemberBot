@@ -1,5 +1,3 @@
-//APEX SAFEGUARD MODULES - LOGGER
-
 //Node Modules
 const ts = require(`time-stamp`)
 
