@@ -20,7 +20,7 @@ client.on("message", async message => {
     })
 
     async function deleter(message) {
-      await database.destroy({where: {id: message.id}});
+      await database.destroy({ where: { id: message.id } });
     }
 
     setTimeout(function () { deleter(message) }, 360000)
@@ -66,7 +66,10 @@ Interesting offer`,
       `You have been suspended by the QSI, QAC and QSST for violating clause five of the new administration rules, rule one in the old rules.\n
 Due to an ongoing case on you by QIAD, your suspension time is unset and currently indefinite. 
 Your suspension time will be updated soon. If you have any objections state them now and await for an answer.\n 
-~EramsorGR, Director Of SST`
+~EramsorGR, Director Of SST`,
+      `> I am so furious
+bust an angry nut`,
+      `https://media.discordapp.net/attachments/639637926413729804/732103231605571595/unknown.png`
     ]
     let e = Math.floor((Math.random() * options.length));
     return message.channel.send(options[e])
