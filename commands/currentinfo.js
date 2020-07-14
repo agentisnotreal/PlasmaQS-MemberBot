@@ -9,8 +9,8 @@ module.exports = class currentinfo {
         const fetch = require(`node-fetch`)
         const Discord = require(`discord.js`)
 
-        /*Plasma Inc*/ fetch(`https://groups.roblox.com/v1/groups/4192306`).then(res => res.json()).then(body => {
-            if (!body) return;
+        /*Plasma Inc*/ fetch(`https://groups.roblox.com/v1/groups/4192306`).then(res => res.json()).then(plasmaMemberCount => {
+            if (!plasmaMemberCount) return;
                 /*BHNPS*/ fetch(`https://games.roblox.com/v1/games/3657848528/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json()).then(body2 => {
                 if (!body2) return;
 
@@ -19,10 +19,8 @@ module.exports = class currentinfo {
                     bhnpsPlaying = r.playing + bhnpsPlaying
                 })
 
-                        /*Quantum Science*/ fetch(`https://groups.roblox.com/v1/groups/2847031`).then(res => res.json()).then(body3 => {
-
-                    if (!body3) return;
-
+                        /*Quantum Science*/ fetch(`https://groups.roblox.com/v1/groups/2847031`).then(res => res.json()).then(qsMemberCount => {
+                    if (!qsMemberCount) return;
                                 /*QSERF */ fetch(`https://games.roblox.com/v1/games/3039795291/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json()).then(body4 => {
 
                         if (!body4) return;
@@ -34,9 +32,9 @@ module.exports = class currentinfo {
 
                         let gameMath, groupMath;
 
-                        if (body3.memberCount > body.memberCount) groupMath = body3.memberCount - body.memberCount;
-                        if (body.memberCount > body3.memberCount) groupMath = body.memberCount - body3.memberCount;
-                        if (body3.memberCount === body3.memberCount) groupMath = 0;
+                        if (qsMemberCount.memberCount > plasmaMemberCount.memberCount) groupMath = body3.memberCount - body.memberCount;
+                        if (plasmaMemberCount.memberCount > qsMemberCount.memberCount) groupMath = body.memberCount - body3.memberCount;
+                        if (qsMemberCount.memberCount === plasmaMemberCount.memberCount) groupMath = 0;
                         if (qserfPlaying > bhnpsPlaying) gameMath = qserfPlaying - bhnpsPlaying;
                         if (bhnpsPlaying > qserfPlaying) gameMath = bhnpsPlaying - qserfPlaying;
                         if (qserfPlaying === bhnpsPlaying) gameMath = 0;
