@@ -32,8 +32,8 @@ module.exports = class currentinfo {
 
                         let gameMath, groupMath;
 
-                        if (qsMemberCount.memberCount > plasmaMemberCount.memberCount) groupMath = body3.memberCount - body.memberCount;
-                        if (plasmaMemberCount.memberCount > qsMemberCount.memberCount) groupMath = body.memberCount - body3.memberCount;
+                        if (qsMemberCount.memberCount > plasmaMemberCount.memberCount) groupMath = qsMemberCount.memberCount - plasmaMemberCount.memberCount;
+                        if (plasmaMemberCount.memberCount > qsMemberCount.memberCount) groupMath = plasmaMemberCount.memberCount - qsMemberCount.memberCount;
                         if (qsMemberCount.memberCount === plasmaMemberCount.memberCount) groupMath = 0;
                         if (qserfPlaying > bhnpsPlaying) gameMath = qserfPlaying - bhnpsPlaying;
                         if (bhnpsPlaying > qserfPlaying) gameMath = bhnpsPlaying - qserfPlaying;
