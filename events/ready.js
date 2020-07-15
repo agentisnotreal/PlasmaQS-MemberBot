@@ -53,14 +53,14 @@ client.on(`ready`, () => {
 
           let math;
 
-          if (qserfPlaying > bhnpsPlaying) math = `[${qs}] ${qserfPlaying - bhnpsPlaying}`;
-          if (bhnpsPlaying > qserfPlaying) math = `[${plasma}] ${bhnpsPlaying - qserfPlaying}`;
-          if (qserfPlaying === bhnpsPlaying) math = 0;
+          if (qserfPlaying > bhnpsPlaying) math = `[${qs}] \`${qserfPlaying - bhnpsPlaying}\``;
+          if (bhnpsPlaying > qserfPlaying) math = `[${plasma}] \`${bhnpsPlaying - qserfPlaying}\``;
+          if (qserfPlaying === bhnpsPlaying) math = "`0`";
 
           let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`
 ↳ BHNPS: \`${bhnpsPlaying}\`\n${qs} **Quantum Science:** \`${body3.memberCount}\`
 ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body3.memberCount - body.memberCount}\`
-Game: \`${math}\`
+Game: ${math}
 **----------**`;
           let memberlogs = client.channels.cache.get(`705065482780409895`)
 
