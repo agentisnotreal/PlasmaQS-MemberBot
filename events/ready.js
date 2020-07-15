@@ -53,8 +53,8 @@ client.on(`ready`, () => {
 
           let math;
 
-          if (qserfPlaying > bhnpsPlaying) math = qserfPlaying - bhnpsPlaying;
-          if (bhnpsPlaying > qserfPlaying) math = bhnpsPlaying - qserfPlaying;
+          if (qserfPlaying > bhnpsPlaying) math = `[${qs}] ${qserfPlaying - bhnpsPlaying}`;
+          if (bhnpsPlaying > qserfPlaying) math = `[${plasma}] ${bhnpsPlaying - qserfPlaying}`;
           if (qserfPlaying === bhnpsPlaying) math = 0;
 
           let message = `${plasma} **Plasma Inc:** \`${body.memberCount}\`
