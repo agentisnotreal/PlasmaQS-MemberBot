@@ -7,7 +7,7 @@ module.exports = class cmds {
     }
     run(client, message, args, config) {
         const Discord = require(`discord.js`);
-        let CH = require("../../modules/CommandHandler");
+        let CH = require("../modules/CommandHandler");
         let cmdmap = CH.commands;
 
         let cmds = new Array();
