@@ -41,8 +41,8 @@ module.exports = class currentinfo {
 
                         let info = new Discord.MessageEmbed()
                             .setAuthor(`Current Group Stats for lazy people`, client.user.avatarURL({ size: 2048, type: "png" }))
-                            .addField(`${plasma} Plasma Inc`, `Group: \`${plasmaMemberCount.memberCount}\`\nBHNPS: \`${bhnpsPlaying}\``)
-                            .addField(`${qs} Quantum Science Inc`, `Group: \`${qsMemberCount.memberCount}\`\nQSERF: \`${qserfPlaying}\``)
+                            .addField(`${client.emoji.plasma} Plasma Inc`, `Group: \`${plasmaMemberCount.memberCount}\`\nBHNPS: \`${bhnpsPlaying}\``)
+                            .addField(`${client.emoji.qs} Quantum Science Inc`, `Group: \`${qsMemberCount.memberCount}\`\nQSERF: \`${qserfPlaying}\``)
                             .setFooter(`Difference: ${groupMath} | ${gameMath} | well it's all gone to shit`)
 
                         return message.channel.send(info)
