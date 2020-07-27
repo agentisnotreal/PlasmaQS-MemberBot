@@ -3,7 +3,7 @@ const config = require(`../config.json`)
 const fetch = require(`node-fetch`)
 
 // Imports
-const { client, database } = require(`../index`);
+const { client, database, whitelist } = require(`../index`);
 
 // Activities List
 let activities = [
@@ -21,6 +21,7 @@ client.on(`ready`, () => {
   logger.plain(`cyan`, `NaaguBot`)
   logger.plain(`cyan`, `Naagu is ready to take over the world!`);
   database.sync();
+  whitelist.sync();
   client.user.setStatus(`online`)
 
   setInterval(() => {

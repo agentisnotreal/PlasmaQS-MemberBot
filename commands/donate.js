@@ -17,3 +17,4 @@ module.exports = class donate {
         return message.channel.send(donate)
     }
 }
+

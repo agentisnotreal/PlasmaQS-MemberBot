@@ -36,8 +36,6 @@ client.on("message", message => {
         permlevel = 4
     } else if (message.member.roles.cache.has(`678274231821402113`) || message.member.permissions.has('ADMINISTRATOR')) {
         permlevel = 3
-    } else if (message.member.roles.cache.has(`678274231821402113`) || message.member.roles.highest.position >= modrole.position) {
-        permlevel = 2
     } else {
         permlevel = 1
     }
@@ -76,11 +74,20 @@ const database = sequelize.define("starboard", {
     }
 })
 
+const whitelist = sequelize.define("whitelist", {
+    id: {
+        type: Sequelize.STRING,
+        unique: true,
+        primaryKey: true
+    }
+})
+
 // Exports
 module.exports = {
     CH: CH,
     client: client,
-    database: database
+    database: database,
+    whitelist: whitelist
 }
 // Login System
 client.login(config.token);
