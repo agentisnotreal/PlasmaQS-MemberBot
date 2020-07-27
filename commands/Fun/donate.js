@@ -1,9 +1,16 @@
 module.exports = class donate {
     constructor() {
-        this.name = `donate`,
-            this.alias = [],
-            this.usage = `donate`,
-            this.permlevel = 1
+        this.settings = {
+            name: "donate",
+            alias: [],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "donate",
+            info: "Displays the donation embed",
+            category: "Fun"
+        }
     }
     run(client, message, args, config) {
         const Discord = require(`discord.js`);

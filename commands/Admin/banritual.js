@@ -1,9 +1,16 @@
 module.exports = class banritual {
     constructor() {
-        this.name = `banritual`,
-            this.alias = [`ban`, `ixev`],
-            this.usage = `ban [user] [reason]`,
-            this.permlevel = 2
+        this.settings = {
+            name: "banritual",
+            alias: ["ban", "ixev"],
+            permlevel: 2,
+            disabled: false
+        }
+        this.about = {
+            usage: "banritual [user]",
+            info: "Bans a user from the server",
+            category: "Admin"
+        }
     }
     run(client, message, args, config) {
         let reason = args.slice(2).join(` `);

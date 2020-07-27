@@ -1,10 +1,17 @@
 module.exports = class evaluate {
 
     constructor() {
-        this.name = 'eval',
-            this.alias = [],
-            this.usage = 'eval [code]'
-        this.permlevel = 5
+        this.settings = {
+            name: "eval",
+            alias: [],
+            permlevel: 3,
+            disabled: false
+        }
+        this.about = {
+            usage: "No.",
+            info: "Executes code",
+            category: "Admin"
+        }
     }
     run(client, message, args, config) {
 

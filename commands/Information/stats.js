@@ -1,9 +1,16 @@
 module.exports = class stats {
     constructor() {
-        this.name = `stats`,
-            this.alias = [],
-            this.usage = `stats`,
-            this.permlevel = 1
+        this.settings = {
+            name: "stats",
+            alias: [],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "stats",
+            info: "Displays the very real bot statistics",
+            category: "Information"
+        }
     }
     run(client, message, args, config) {
         const Discord = require(`discord.js`)

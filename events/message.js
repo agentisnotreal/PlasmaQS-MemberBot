@@ -2,7 +2,7 @@
 const Discord = require(`discord.js`);
 
 // Imports
-const { client, database } = require(`../index`);
+const { client, database, CH } = require(`../index`);
 const config = require(`../config.json`);
 
 client.on("message", async message => {
@@ -10,6 +10,25 @@ client.on("message", async message => {
   // Check if message is in a DM or author is a bot
   if (message.channel.type == `dm`) return;
   if (message.author.bot == true) return;
+  if (message.author.id == client.user.id) return;
+
+  let args = message.content.split(" ");
+
+  let command = args[0];
+
+  let cmd = CH.getCommand(config.prefix, command.toLowerCase())
+
+  if (cmd) {
+    if (cmd.settings.permlevel > client.getPermlevel(message.author.id, message.guild.id)) {
+      return message.channel.send(`${client.emoji.error} Fuck off, you aren't important enough to run this command! Keep sucking, you'll get there soon...`)
+    }
+
+    try {
+      cmd.run(client, message, args, config);
+    } catch (e) {
+      return message.channel.send(`${client.emoji.error} It's all Diamond's fault that \`${cmd.settings.name}\` broke! Error Message: \`${e.message}\``);
+    }
+  };
 
   reactioncruncher(message)
 

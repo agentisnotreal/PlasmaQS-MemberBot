@@ -1,9 +1,16 @@
 module.exports = class quantosstatus {
     constructor() {
-        this.name = `quantosstatus`,
-            this.alias = [`qs`, `quantosstats`],
-            this.usage = `quantosstatus`,
-            this.permlevel = 1
+        this.settings = {
+            name: "quantosstatus",
+            alias: ["qs"],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "quantosstatus",
+            info: "Sends the status of all QuantOS Infrastructure",
+            category: "Information"
+        }
     }
     async run(client, message, args) {
         // rewrote (kinda) this command, still messy because yes ~agent

@@ -20,7 +20,7 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
         var image = messageReaction.message.attachments.array();
         if (image && image.length) {
             let imageurl = image[0].url
-            let attachembed = new MessageEmbed(embed).setImage(`${imageurl}`)
+            let attachembed = embed.setImage(`${imageurl}`)
             channel.send(attachembed)
 
             await database.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))

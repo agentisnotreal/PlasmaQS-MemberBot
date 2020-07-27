@@ -1,9 +1,16 @@
 module.exports = class currentinfo {
     constructor() {
-        this.name = `currentinfo`,
-            this.alias = [`ci`, `cinfo`],
-            this.usage = `currentinfo`,
-            this.permlevel = 1
+        this.settings = {
+            name: "currentinfo",
+            alias: ["ci"],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "currentinfo",
+            info: "Sends current statistics of QS and Plasma Inc",
+            category: "Information"
+        }
     }
     run(client, message, args, config) {
         const fetch = require(`node-fetch`)
