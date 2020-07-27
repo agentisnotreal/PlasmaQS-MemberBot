@@ -25,13 +25,17 @@ The Plasma-QS Member Tracker is a bot programmed in JS using the discord.js libr
 
 ## how to run
 
-Create a `config.json` file with this inside:
+Open the `configTemplate.json` file and fill in the values, **then rename it to `config.json`.**
 
 ```json
 {
-  "token": "BOT TOKEN",
-  "prefix": "ANY PREFIX",
-  "version": "this really doesn't matter"
+  "token": "Token of the bot that will be used",
+  "prefix": "Prefix for commands",
+  "welcomeChannel": "Channel where welcome messages are displayed",
+  "starboardChannel": "Channel where the starboard (pinned messages) are displayed",
+  "adminRole": "Role where admins get access to admin commands",
+  "managers": ["[ARRAY - STRING] Users who will have access to developer commands"],
+  "enhancedSecurity": "[BOOLEAN - TRUE/FALSE] Indicates whether strict security measures will be enforced"
 }
 ```
 

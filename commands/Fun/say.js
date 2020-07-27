@@ -1,10 +1,17 @@
 module.exports = class say {
 
     constructor() {
-        this.name = 'say',
-            this.alias = ['send'],
-            this.usage = 'say [content]'
-        this.permlevel = 1
+        this.settings = {
+            name: "say",
+            alias: [],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "say [message]",
+            info: "Sends a message as Naagu",
+            category: "Fun"
+        }
     }
     run(client, message, args, config) {
         let content = args.slice(1).join(` `)

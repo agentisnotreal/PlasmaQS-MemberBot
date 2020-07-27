@@ -1,4 +1,5 @@
 const fs = require(`fs`)
+
 class CommandHandler {
     constructor(data = {}) {
 
@@ -31,24 +32,31 @@ class CommandHandler {
         if (files.length <= 0) {
             logger.error(`No commands found!`);
         }
-        const fileAmount = `${jsFiles.length}`;
-        logger(`green`, `Loading ${fileAmount} commands.\n`);
+        let fileAmount = jsFiles.length;
+        logger(`green`, `Loading ${fileAmount} commands`);
 
         // Command Loader
         for (const f of jsFiles) {
-            const file = require(folder + f);
-            const cmd = new file();
+            try {
+                const file = require(folder + f);
+                const cmd = new file();
 
-            const name = cmd.name;
-            commands.set(name, cmd);
+                if (cmd.settings.disabled == true) {
+                    logger.warn(`Command '${cmd.settings.name}' is disabled. Ignoring file.`);
+                } else {
+                    const name = cmd.settings.name;
+                    commands.set(name, cmd);
 
-            logger(`green`, `Command '${name}' has loaded`);
-            for (const alias of cmd.alias) {
-                aliases.set(alias, name);
+                    logger(`green`, `Command '${name}' has loaded`);
+                    for (const alias of cmd.settings.alias) {
+                        aliases.set(alias, name);
+                    }
+                }
+            } catch (e) {
+                logger.error(`Failed to load command from file '${f}'. Reason: ${e}`);
             }
         }
 
-        logger(`green`, `All commands have loaded Successfully. Now loading events.\n`);
         this.commands = commands;
         this.aliases = aliases;
         module.exports = {

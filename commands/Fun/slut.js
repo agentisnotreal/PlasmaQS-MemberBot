@@ -1,9 +1,16 @@
 module.exports = class slut {
     constructor() {
-        this.name = `slut`,
-            this.alias = [`terry`],
-            this.usage = `slut`,
-            this.permlevel = 1
+        this.settings = {
+            name: "slut",
+            alias: ["terry"],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "slut",
+            info: "t e r r y",
+            category: "Fun"
+        }
     }
     run(client, message, args, config) {
         message.channel.send(`no daddy, no uwu`);

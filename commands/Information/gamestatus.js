@@ -1,9 +1,16 @@
 module.exports = class gamestatus {
     constructor() {
-        this.name = `gamestatus`,
-            this.alias = [`gstatus`, `gs`],
-            this.usage = `gamestatus`,
-            this.permlevel = 1
+        this.settings = {
+            name: "gamestatus",
+            alias: ["gs"],
+            permlevel: 1,
+            disabled: false
+        }
+        this.about = {
+            usage: "gamestatus [--flag (game/group)]",
+            info: "Shows group/game status of the scifi community",
+            category: "Information"
+        }
     }
     async run(client, message, args, config) {
         const fetch = require(`node-fetch`);

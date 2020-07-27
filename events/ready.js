@@ -54,12 +54,12 @@ client.on(`ready`, () => {
 
           let math;
 
-          if (qserfPlaying > bhnpsPlaying) math = `[${client.emojis.qs}] \`${qserfPlaying - bhnpsPlaying}\``;
-          if (bhnpsPlaying > qserfPlaying) math = `[${client.emojis.plasma}] \`${bhnpsPlaying - qserfPlaying}\``;
+          if (qserfPlaying > bhnpsPlaying) math = `[${client.emoji.qs}] \`${qserfPlaying - bhnpsPlaying}\``;
+          if (bhnpsPlaying > qserfPlaying) math = `[${client.emoji.plasma}] \`${bhnpsPlaying - qserfPlaying}\``;
           if (qserfPlaying === bhnpsPlaying) math = "`0`";
 
-          let message = `${client.emojis.plasma} **Plasma Inc:** \`${body.memberCount}\`
-↳ BHNPS: \`${bhnpsPlaying}\`\n${client.emojis.qs} **Quantum Science:** \`${body3.memberCount}\`
+          let message = `${client.emoji.plasma} **Plasma Inc:** \`${body.memberCount}\`
+↳ BHNPS: \`${bhnpsPlaying}\`\n${client.emoji.qs} **Quantum Science:** \`${body3.memberCount}\`
 ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body3.memberCount - body.memberCount}\`
 Game: ${math}
 **----------**`;
