@@ -1,0 +1,9 @@
+{
+    "token": "Token",
+    "prefix": "Prefix",
+    "welcomeChannel": "Channel ID (String)",
+    "starboardChannel": "Channel ID (String)",
+    "adminrRole": "Role ID (String)",
+    "managers": ["User ID (String)"],
+    "enhancedSecurity": false
+}
