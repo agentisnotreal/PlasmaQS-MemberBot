@@ -1,3 +1,8 @@
+## NOTICE
+This repository is no longer maintained! If you wish to continue this project, fork it.
+
+---
+
 <div align="center">
   <br />
   <p>

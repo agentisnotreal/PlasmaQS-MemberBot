@@ -1,4 +1,5 @@
 const { client, database } = require("../index");
+const { starboardChannel } = require("../config.json");
 const { MessageEmbed } = require("discord.js");
 
 client.on("messageReactionAdd", async (messageReaction, user) => {
@@ -6,7 +7,7 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
     let starredmsg = await database.findOne({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
     if (!starredmsg) return;
 
-    let channel = messageReaction.message.guild.channels.cache.find(x => x.name === "starboard");
+    let channel = client.channels.cache.get(starboardChannel);
 
     if (messageReaction.count >= 2 && messageReaction.emoji.name == "⭐") {
         let embed = new MessageEmbed()

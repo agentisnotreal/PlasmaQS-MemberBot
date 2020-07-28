@@ -14,7 +14,7 @@ module.exports = class whitelist {
     }
     async run(client, message, args) {
         const { whitelist } = require("../../index");
-        const { enhancedSecurity } = require("../../config.json");
+        const { enhancedSecurity, welcomeChannel } = require("../../config.json");
 
         if (enhancedSecurity === false) return message.channel.send(`${client.emoji.cross} \`enhancedSecurity\` is set to false in the config.json file!`);
 
@@ -22,7 +22,7 @@ module.exports = class whitelist {
 
         if (!uid) return message.channel.send(`${client.emoji.cross} No user to whitelist specified!`);
 
-        client.users.fetch(uid).then(user => {
+        client.users.fetch(uid).then(async user => {
 
             let wl = await whitelist.findOne({ where: { id: uid } });
 
@@ -38,7 +38,7 @@ module.exports = class whitelist {
             } else if (!wl) {
                 whitelist.create({ id: uid });
 
-                let invite = await client.channels.cache.get("678272867707781120").createInvite({ maxUses: 1 })
+                let invite = await client.channels.cache.get(welcomeChannel).createInvite({ maxUses: 1 })
                 message.channel.send(`**${user.tag}** has been added to the whitelist! Here's a __single-use__ invite: https://discord.gg/${invite.code}`);
                 return;
             }
