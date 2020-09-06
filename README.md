@@ -1,5 +1,5 @@
 ## NOTICE
-This repository is no longer maintained! If you wish to continue this project, fork it.
+Since this bot now only lives on my own server for the purposes of serving statistics, this bot is no longer (actively) maintained. I recommend forking this repository if you wish to contribute.
 
 ---
 
