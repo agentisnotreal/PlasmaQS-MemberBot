@@ -1,8 +1,8 @@
 module.exports = client => {
 
     client.emoji = {
-        plasma: "<:plasma:705065113627000902>",
-        qs: "<:quantumscience:705065144220254330>",
+        plasma: "<:plasmainc:761964993422950420>",
+        qs: "<:quantumscience:761965008757325864>",
         tick: "<:tick:709325548341559326>",
         cross: "❌"
     }
