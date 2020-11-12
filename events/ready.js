@@ -63,7 +63,7 @@ client.on(`ready`, () => {
 ↳ QSERF: \`${qserfPlaying}\`\n\n**Difference:**\nGroup: \`${body3.memberCount - body.memberCount}\`
 Game: ${math}
 **----------**`;
-          let memberlogs = client.channels.cache.get(`752233614892335234`)
+          let memberlogs = client.channels.cache.get(`705065482780409895`)
 
           memberlogs.send(message)
         })
