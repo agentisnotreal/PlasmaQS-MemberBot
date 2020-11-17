@@ -12,12 +12,13 @@ module.exports = client => {
         let server = client.guilds.cache.get(guild);
         if (!server) reject(new Error("Invalid guild specified in client.getPermlevel function!"));
 
-        let admin = server.roles.cache.get(adminRole);
+        let admin = await server.roles.fetch(adminRole);
 
         let member = await server.members.fetch(user);
+        console.log(admin)
 
         if (managers.includes(user)) return resolve(3);
-        else if (member.roles.cache.has(admin) || member.roles.highest.position >= admin.position) return resolve(2);
+        else if (member.roles.cache.has(admin) || member.roles.highest.rawPosition >= admin.rawPosition) return resolve(2);
         else return resolve(1);
     })
     };
