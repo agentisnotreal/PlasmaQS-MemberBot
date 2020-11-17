@@ -19,7 +19,8 @@ client.on("message", async message => {
   let cmd = CH.getCommand(config.prefix, command.toLowerCase())
 
   if (cmd) {
-    if (cmd.settings.permlevel > client.getPermlevel(message.author.id, message.guild.id)) {
+    let getpl = await client.getPermlevel(message.author.id, message.guild.id);
+    if (cmd.settings.permlevel > getpl) {
       return message.channel.send(`${client.emoji.error} Fuck off, you aren't important enough to run this command! Keep sucking, you'll get there soon...`)
     }
 
