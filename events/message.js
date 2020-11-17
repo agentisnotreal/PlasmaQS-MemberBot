@@ -21,13 +21,13 @@ client.on("message", async message => {
   if (cmd) {
     let getpl = await client.getPermlevel(message.author.id, message.guild.id);
     if (cmd.settings.permlevel > getpl) {
-      return message.channel.send(`${client.emoji.error} Fuck off, you aren't important enough to run this command! Keep sucking, you'll get there soon...`)
+      return message.channel.send(`${client.emoji.cross} Fuck off, you aren't important enough to run this command! Keep sucking, you'll get there soon...`)
     }
 
     try {
       cmd.run(client, message, args, config);
     } catch (e) {
-      return message.channel.send(`${client.emoji.error} It's all Diamond's fault that \`${cmd.settings.name}\` broke! Error Message: \`${e.message}\``);
+      return message.channel.send(`${client.emoji.cross} It's all Diamond's fault that \`${cmd.settings.name}\` broke! Error Message: \`${e.message}\``);
     }
   };
 
