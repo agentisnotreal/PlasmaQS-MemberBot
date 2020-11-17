@@ -15,7 +15,7 @@ module.exports = client => {
         let admin = await server.roles.fetch(adminRole);
 
         let member = await server.members.fetch(user);
-        console.log(admin)
+
 
         if (managers.includes(user)) return resolve(3);
         else if (member.roles.cache.has(admin) || member.roles.highest.rawPosition >= admin.rawPosition) return resolve(2);

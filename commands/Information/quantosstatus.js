@@ -20,7 +20,7 @@ module.exports = class quantosstatus {
 
         // QuantOS Infrastructure
         let quantosBase = await fetch("https://quantum-science.xyz");
-        let quantosPortal = await fetch("https://verify.quantos.xyz");
+        let quantosPortal = await fetch("https://verify.quantum-science.xyz");
         let quantosPanel = await fetch("https://qwn.quantum-science.xyz");
 
         let qBaseStats = `${client.emoji.tick} **Online**`;
