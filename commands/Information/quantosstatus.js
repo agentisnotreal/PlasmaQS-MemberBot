@@ -19,19 +19,13 @@ module.exports = class quantosstatus {
         const { MessageEmbed } = require("discord.js");
 
         // QuantOS Infrastructure
-        let quantosBase = await fetch("https://quantos.xyz");
-        let quantosBot = await fetch("https://bot.quantos.xyz");
-        let quantosAPI = await fetch("https://api.quantos.xyz");
-        let quantosPortal = await fetch("https://portal.quantos.xyz");
-        let quantosPanel = await fetch("https://panel.quantos.xyz");
-        let quantosPMA = await fetch("https://pma.quantos.xyz");
+        let quantosBase = await fetch("https://quantum-science.xyz");
+        let quantosPortal = await fetch("https://verify.quantos.xyz");
+        let quantosPanel = await fetch("https://qwn.quantum-science.xyz");
 
         let qBaseStats = `${client.emoji.tick} **Online**`;
-        let qBotStats = `${client.emoji.tick} **Online**`;
-        let qAPIStats = `${client.emoji.tick} **Online**`;
         let qPortalStats = `${client.emoji.tick} **Online**`;
         let qPanelStats = `${client.emoji.tick} **Online**`;
-        let qPMAStats = `${client.emoji.tick} **Online**`;
 
         // Misc. Infrastructure
         let robloxAPI = await fetch("https://api.roblox.com/docs/");
@@ -39,18 +33,10 @@ module.exports = class quantosstatus {
         let rAPIStats = `${client.emoji.tick} **Online**`;
         let pPDNStats = `${client.emoji.tick} **Online**`;
 
-        let uptimestats = 6;
+        let uptimestats = 3;
 
-        if (quantosBot.status > 299 || quantosBot.status < 200) {
-            qBotStats = `${client.emoji.cross} **${quantosBot.status}** | ${quantosBot.statusText}`;
-            uptimestats -= 1
-        }
         if (quantosBase.status > 299 || quantosBase.status < 200) {
             qBaseStats = `${client.emoji.cross} **${quantosBase.status}** | ${quantosBase.statusText}`;
-            uptimestats -= 1
-        }
-        if (quantosAPI.status > 299 || quantosAPI.status < 200) {
-            qAPIStats = `${client.emoji.cross} **${quantosAPI.status}** | ${quantosAPI.statusText}`;
             uptimestats -= 1
         }
         if (quantosPortal.status > 299 || quantosPortal.status < 200) {
@@ -59,10 +45,6 @@ module.exports = class quantosstatus {
         }
         if (quantosPanel.status > 299 || quantosPanel.status < 200) {
             qPanelStats = `${client.emoji.cross} **${quantosPanel.status}** | ${quantosPanel.statusText}`;
-            uptimestats -= 1
-        }
-        if (quantosPMA.status > 299 || quantosPMA.status < 200) {
-            qPMAStats = `${client.emoji.cross} **${quantosPMA.status}** | ${quantosPMA.statusText}`;
             uptimestats -= 1
         }
         if (robloxAPI.status > 299 || robloxAPI.status < 200) {
@@ -75,18 +57,15 @@ module.exports = class quantosstatus {
         let status = new MessageEmbed()
             .setTitle("QuantOS Status")
             .setDescription(`
-**API:** ${qAPIStats}
 **Base:** ${qBaseStats}
-**Bot:** ${qBotStats}
 **Panel:** ${qPanelStats}
-**Portal:** ${qPortalStats}
-**phpMyAdmin:** ${qPMAStats}
+**Verify:** ${qPortalStats}
 
 ${client.emoji.plasma} **PDN:** ${pPDNStats}
 <:rstudio:726804277024129147> **API:** ${rAPIStats}
 
 **NOTE:** This is __not 100% accurate!__`)
-            .setFooter(`${uptimestats}/6 Online`);
+            .setFooter(`${uptimestats}/3 Online`);
 
         return message.channel.send(status);
     }
