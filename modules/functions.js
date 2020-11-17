@@ -18,7 +18,7 @@ module.exports = client => {
 
         if (managers.includes(user)) {
             return 3;
-        } else if (member.roles.cache.has(admin) || member.roles.highest.position >= admin.position) {
+        } else if (member.roles.cache.has(admin) || member.roles.cache.highest.position >= admin.position) {
             return 2;
         } else return 1;
     };
