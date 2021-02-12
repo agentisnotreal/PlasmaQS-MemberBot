@@ -12,35 +12,37 @@ module.exports = class cmds {
             category: "Information"
         }
     }
-    run(client, message, args, config) {
+    async run(client, message, args) {
         const { MessageEmbed } = require(`discord.js`);
-        let CH = require("../../modules/CommandHandler");
-        let cmdmap = CH.commands;
+        let userPl = await client.getPermlevel(message.member);
 
-        let admin = new Array(),
-            fun = new Array(),
-            information = new Array()
+        let categories = [];
+        categories.Admin = [],
+            categories.Fun = [],
+            categories.Information = [];
 
-        for (let cmd of cmdmap.values()) {
-            switch (cmd.about.category) {
-                case "Admin":
-                    admin.push(`\`${cmd.settings.name}\``);
-                    break;
-                case "Fun":
-                    fun.push(`\`${cmd.settings.name}\``);
-                    break;
-                case "Information":
-                    information.push(`\`${cmd.settings.name}\``)
-            }
+        for (let cmd of client.commands.values()) {
+            if (userPl < cmd.settings.permlevel);
+            else
+                switch (cmd.about.category) {
+                    case "Admin":
+                        categories.Admin.push(`\`${cmd.settings.name}\``);
+                        break;
+                    case "Fun":
+                        categories.Fun.push(`\`${cmd.settings.name}\``);
+                        break;
+                    case "Information":
+                        categories.Information.push(`\`${cmd.settings.name}\``)
+                }
         }
 
         let cmdlist = new MessageEmbed()
-            .setTitle("Commands")
-
-        if (client.getPermlevel(message.author.id, message.guild.id) >= 2) cmdlist.addField(`Admin [${admin.length}]`, admin.join(", "));
-        cmdlist.addField(`Fun [${fun.length}]`, fun.join(", "))
-        .addField(`Information [${information.length}]`, information.join(", "))
-        .setFooter("Powered by better-djs11™");
+            .setTitle("Commands");
+        for (let ct in categories) {
+            let cat = categories[ct];
+            if (cat.length !== 0) cmdlist.addField(ct.toString(), cat.join(", "));
+        }
+        cmdlist.setFooter("Powered by better-djs11™");
 
         return message.channel.send(cmdlist);
 

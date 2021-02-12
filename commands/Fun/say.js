@@ -13,14 +13,13 @@ module.exports = class say {
             category: "Fun"
         }
     }
-    run(client, message, args, config) {
-        let content = args.slice(1).join(` `)
+    run(client, message, args) {
+        let content = args.slice(1).join(" ");
         if (!content) {
-            return message.channel.send(`What the fuck am I supposed to send?`)
+            return message.channel.send(`i need something to send or the Discord API will return to an error. now, allow me to explain the error details and how i handle it`);
         } else {
-            message.delete()
-            message.channel.send(content)
-            return;
+            message.delete();
+            return message.channel.send(content);
         }
     }
 }

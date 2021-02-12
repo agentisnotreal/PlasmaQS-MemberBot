@@ -1,19 +1,18 @@
-const { client, database } = require("../index");
-const { starboardChannel } = require("../config.json");
+const { client } = require("../index");
 const { MessageEmbed } = require("discord.js");
 
 client.on("messageReactionAdd", async (messageReaction, user) => {
 
-    let starredmsg = await database.findOne({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
+    let starredmsg = await client.db.starboard.findOne({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
     if (!starredmsg) return;
 
-    let channel = client.channels.cache.get(starboardChannel);
+    let channel = client.channels.cache.get(client.config.channels.starboard);
 
     if (messageReaction.count >= 2 && messageReaction.emoji.name == "⭐") {
         let embed = new MessageEmbed()
             .setColor("#ffc83d")
             .setAuthor(messageReaction.message.author.tag)
-            .setThumbnail(messageReaction.message.author.avatarURL({ format: "png", size: 2048, dynamic: true}))
+            .setThumbnail(messageReaction.message.author.avatarURL({ format: "png", size: 2048, dynamic: true }))
             .addField("Channel", messageReaction.message.channel, true)
             .addField("Message", `[here](${messageReaction.message.url})`, true)
             .setDescription(`${messageReaction.message.content}`)
@@ -24,10 +23,10 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
             let attachembed = embed.setImage(`${imageurl}`)
             channel.send(attachembed)
 
-            await database.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
+            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
         } else {
             channel.send(embed)
-            await database.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
+            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
         }
     }
 })

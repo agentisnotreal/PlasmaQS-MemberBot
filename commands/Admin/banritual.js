@@ -1,3 +1,5 @@
+const { MessageAttachment } = require("discord.js");
+
 module.exports = class banritual {
     constructor() {
         this.settings = {
@@ -12,7 +14,7 @@ module.exports = class banritual {
             category: "Admin"
         }
     }
-    run(client, message, args, config) {
+    run(client, message, args) {
         let reason = args.slice(2).join(` `);
         let member = message.mentions.members.first()
 
@@ -29,6 +31,6 @@ module.exports = class banritual {
         }
 
         member.ban(reason);
-        return message.channel.send(`**${member.user.tag}** has been banned from Clown HQ! https://media.discordapp.net/attachments/640253570217803776/678026485478457376/hr.gif`)
+        return message.channel.send(`**${member.user.tag}** has been banned from Clown HQ!`, new MessageAttachment("../../assets/img/hr.gif"));
     }
 }

@@ -13,7 +13,7 @@ module.exports = class evaluate {
             category: "Admin"
         }
     }
-    run(client, message, args, config) {
+    run(client, message, args) {
 
         function clean(text) {
             if (typeof (text) === "string")
@@ -27,7 +27,7 @@ module.exports = class evaluate {
             let evaled = eval(code);
 
             if (!code) {
-                return message.channel.send(`What the fuck am I supposed to evaluate?`)
+                return message.channel.send("air can't be evaluated, dumbass")
             } else
 
                 if (typeof evaled !== "string")

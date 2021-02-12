@@ -12,7 +12,7 @@ module.exports = class dog {
             category: "Fun"
         }
     }
-    run(client, message, args, config) {
-        return message.reply(`Donators only! (\`%donate\`)`)
+    run(client, message, args) {
+        return message.reply("Donators only! (`%donate`)");
     }
 }

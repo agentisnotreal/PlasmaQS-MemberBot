@@ -12,7 +12,7 @@ module.exports = class yesoryes {
             category: "Fun"
         }
     }
-    run(client, message, args, config) {
-        return message.channel.send(`https://cdn.plasmainc.xyz/QSI_facts.mp4`)
+    run(client, message, args) {
+        return message.channel.send("https://cdn.plasmainc.xyz/QSI_facts.mp4");
     }
 }
