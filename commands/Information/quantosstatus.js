@@ -19,7 +19,7 @@ module.exports = class quantosstatus {
         const { MessageEmbed } = require("discord.js");
 
         // QuantOS Infrastructure
-        let quantosBase = await fetch("https://quantum-science.xyz");
+        let quantosBase = await fetch("https://api.quantum-science.xyz");
         let quantosPortal = await fetch("https://verify.quantum-science.xyz");
         let quantosPanel = await fetch("https://qwn.quantum-science.xyz");
 
@@ -39,25 +39,24 @@ module.exports = class quantosstatus {
             qBaseStats = `${client.emoji.cross} **${quantosBase.status}** | ${quantosBase.statusText}`;
             uptimestats -= 1
         }
+
         if (quantosPortal.status > 299 || quantosPortal.status < 200) {
             qPortalStats = `${client.emoji.cross} **${quantosPortal.status}** | ${quantosPortal.statusText}`;
             uptimestats -= 1
         }
+
         if (quantosPanel.status > 299 || quantosPanel.status < 200) {
             qPanelStats = `${client.emoji.cross} **${quantosPanel.status}** | ${quantosPanel.statusText}`;
             uptimestats -= 1
         }
-        if (robloxAPI.status > 299 || robloxAPI.status < 200) {
-            rAPIStats = `${client.emoji.cross} **${robloxAPI.status}** | ${robloxAPI.statusText}`;
-        }
-        if (plasmaPDN.status > 299 || plasmaPDN.status < 200) {
-            pPDNStats = `${client.emoji.cross} **${plasmaPDN.status}** | ${plasmaPDN.statusText}`;
-        }
+
+        if (robloxAPI.status > 299 || robloxAPI.status < 200) rAPIStats = `${client.emoji.cross} **${robloxAPI.status}** | ${robloxAPI.statusText}`;
+        if (plasmaPDN.status > 299 || plasmaPDN.status < 200) pPDNStats = `${client.emoji.cross} **${plasmaPDN.status}** | ${plasmaPDN.statusText}`;
 
         let status = new MessageEmbed()
             .setTitle("QuantOS Status")
             .setDescription(`
-**Base:** ${qBaseStats}
+**API:** ${qBaseStats}
 **Panel:** ${qPanelStats}
 **Verify:** ${qPortalStats}
 
