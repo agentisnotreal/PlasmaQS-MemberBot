@@ -3,169 +3,116 @@
 //Node Modules
 const ts = require(`time-stamp`)
 
-module.exports = client => {
-
+module.exports = pqsLog => {
   // Logs into console, with colour options
-  logger = (colour, string) => {
-    let stringclr;
-    let response;
-
-    if (!string) {
-      response = `The string in the "logger" function cannot be blank!`;
-      return response;
-    }
-
-    switch (colour) {
-      case "green":
-        stringclr = `\x1b[32m`;
-        break;
-      case "blue":
-        stringclr = `\x1b[34m`;
-        break;
-      case "red":
-        stringclr = "\x1b[31m";
-        break;
-      case "cyan":
-        stringclr = "\x1b[36m";
-        break;
-      case "purple":
-        stringclr = "\x1b[35m";
-        break;
-      case "yellow":
-        stringclr = "\x1b[33m"
-        break;
-      default:
-        stringclr = "\x1b[33m"
-        break;
-    }
-
-    if (stringclr == undefined) {
-      stringclr - "\x1b[33m";
-    }
-
-    console.log("\x1b[47m\x1b[30m" + ts('DD/MM/YYYY') + " " + ts('HH:mm:ss:ms') + "\x1b[0m " + stringclr + "LOGS " + ">\x1b[0m " + string);
-    //console.log(stringclr + `[${ts('DD/mm/YYYY') + " " + ts('HH:mm:ss:ms')}] || LOGS > ${string}`)
-    response = `Success!`;
-    return response;
+  pqsLog.logger = async (colour, string) => {
+    return new Promise((resolve, reject) => {
+      let stringclr;
+      if (!string) return reject(new Error("No string specified!"));
+      switch (colour) {
+        case "green":
+          stringclr = `\x1b[32m`;
+          break;
+        case "blue":
+          stringclr = `\x1b[34m`;
+          break;
+        case "red":
+          stringclr = "\x1b[31m";
+          break;
+        case "cyan":
+          stringclr = "\x1b[36m";
+          break;
+        case "purple":
+          stringclr = "\x1b[35m";
+          break;
+        case "yellow":
+          stringclr = "\x1b[33m"
+          break;
+        default:
+          stringclr = "\x1b[33m"
+          break;
+      }
+      return resolve(console.log(`\x1b[47m\x1b[30m${ts('DD/MM/YYYY')} ${ts('HH:mm:ss:ms')}\x1b[0m${stringclr} [LOGS]\x1b[0m ${string}`));
+    })
   }
 
   // Logs into console, with colour choices & nothing preceeding the string
-  logger.plain = (colour, string) => {
-    let stringclr;
-    let response;
-
-    if (!string) {
-      response = `The string in the "logger" function cannot be blank!`;
-      return response;
-    }
-
-    switch (colour) {
-      case "green":
-        stringclr = `\x1b[32m`;
-        break;
-      case "blue":
-        stringclr = `\x1b[34m`;
-        break;
-      case "red":
-        stringclr = "\x1b[31m";
-        break;
-      case "cyan":
-        stringclr = "\x1b[36m";
-        break;
-      case "purple":
-        stringclr = "\x1b[35m";
-        break;
-      case "yellow":
-        stringclr = "\x1b[33m"
-        break;
-      default:
-        stringclr = "\x1b[33m"
-        break;
-    }
-
-    if (stringclr == undefined) {
-      stringclr - "\x1b[33m";
-    }
-
-    console.log(stringclr + string)
-    response = `Success!`;
-    return response;
+  pqsLog.logger.plain = async (colour, string) => {
+    return new Promise((resolve, reject) => {
+      let stringclr;
+      if (!string) return reject(new Error("No string specified!"));
+      switch (colour) {
+        case "green":
+          stringclr = `\x1b[32m`;
+          break;
+        case "blue":
+          stringclr = `\x1b[34m`;
+          break;
+        case "red":
+          stringclr = "\x1b[31m";
+          break;
+        case "cyan":
+          stringclr = "\x1b[36m";
+          break;
+        case "purple":
+          stringclr = "\x1b[35m";
+          break;
+        case "yellow":
+          stringclr = "\x1b[33m"
+          break;
+        default:
+          stringclr = "\x1b[33m"
+          break;
+      }
+      return resolve(console.log(stringclr + string));
+    })
   };
 
-  logger.custom = (header, colour, string) => {
-    let stringclr;
-    let response;
-
-    if (!string) {
-      response = `The string in the "logger" function cannot be blank!`;
-      return response;
-    }
-
-    if (!header) {
-      response = `The header in the "logger" function cannot be blank!`;
-      return response;
-    }
-
-    switch (colour) {
-      case "green":
-        stringclr = `\x1b[32m`;
-        break;
-      case "blue":
-        stringclr = `\x1b[34m`;
-        break;
-      case "red":
-        stringclr = "\x1b[31m";
-        break;
-      case "cyan":
-        stringclr = "\x1b[36m";
-        break;
-      case "purple":
-        stringclr = "\x1b[35m";
-        break;
-      case "yellow":
-        stringclr = "\x1b[33m"
-        break;
-      default:
-        stringclr = "\x1b[33m"
-        break;
-    }
-
-    if (stringclr == undefined) {
-      stringclr - "\x1b[33m";
-    }
-
-    console.log("\x1b[47m\x1b[30m" + ts('DD/MM/YYYY') + " " + ts('HH:mm:ss:ms') + "\x1b[0m " + stringclr + header + " " + ">\x1b[0m " + string);
-    //console.log(stringclr + `[${ts('HH:mm:ss:ms')}] || ${header} > ${string}`)
-    response = `Success!`;
-    return response;
+  pqsLog.logger.custom = async (header, colour, string) => {
+    return new Promise((resolve, reject) => {
+      let stringclr;
+      if (!string) return reject(new Error("No string specified!"));
+      if (!header) return reject(new Error("No header specified!"));
+      switch (colour) {
+        case "green":
+          stringclr = `\x1b[32m`;
+          break;
+        case "blue":
+          stringclr = `\x1b[34m`;
+          break;
+        case "red":
+          stringclr = "\x1b[31m";
+          break;
+        case "cyan":
+          stringclr = "\x1b[36m";
+          break;
+        case "purple":
+          stringclr = "\x1b[35m";
+          break;
+        case "yellow":
+          stringclr = "\x1b[33m"
+          break;
+        default:
+          stringclr = "\x1b[33m"
+          break;
+      }
+      return resolve(console.log(`\x1b[47m\x1b[30m${ts('DD/MM/YYYY')} ${ts('HH:mm:ss:ms')}\x1b[0m${stringclr} [${header}]\x1b[0m ${string}`));
+    })
   }
 
   // Logs into console as an error, with red colour
-  logger.error = (string) => {
-    let response;
-
-    if (!string) {
-      response = `ERROR > The string in the "logger.error" function cannot be blank!`;
-      return response;
-    } else {
-      console.log("\x1b[47m\x1b[30m" + ts('DD/MM/YYYY') + " " + ts('HH:mm:ss:ms') + "\x1b[0m\x1b[31m " + "ERROR " + ">\x1b[0m " + string);
-      //console.log(`\x1b[31m[${ts('HH:mm:ss:ms')}] || ERROR > ${string}`);
-      response = "Success!";
-      return response;
-    }
+  pqsLog.logger.error = async (string) => {
+    return new Promise((resolve, reject) => {
+      if (!string) return reject(new Error("No string specified!"));
+      return resolve(console.log(`\x1b[47m\x1b[30m${ts('DD/MM/YYYY')} ${ts('HH:mm:ss:ms')}\x1b[0m\x1b[31m [ERROR]\x1b[0m ${string}`));
+    })
   };
 
   // Logs into console as a warning, with yellow colour
-  logger.warn = (string) => {
-    if (!string) {
-      response = `The string in the "logger.warn" function cannot be blank!`
-      return response;
-    } else {
-      console.log("\x1b[47m\x1b[30m" + ts('DD/MM/YYYY') + " " + ts('HH:mm:ss:ms') + "\x1b[0m\x1b[33m " + "WARN " + ">\x1b[0m " + string);
-     // console.log(`\x1b[33m[${ts('HH:mm:ss:ms')}] || WARN > ${string}`)
-      response = "Success!";
-      return response;
-    }
+  pqsLog.logger.warn = (string) => {
+    return new Promise((resolve, reject) => {
+      if (!string) return reject(new Error("No string specified!"));
+      return resolve(console.log(`\x1b[47m\x1b[30m${ts('DD/MM/YYYY')} ${ts('HH:mm:ss:ms')}\x1b[0m\x1b[33m [ERROR]\x1b[0m ${string}`));
+    })
   }
-
 };
