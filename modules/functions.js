@@ -1,25 +1,70 @@
 module.exports = client => {
-    client.getPermlevel = async (user, guild) => {
+    client.getPermlevel = async (member) => {
+        return new Promise((resolve, reject) => {
+            if (!member) reject(new Error("No member specified!"));
+
+            let permissionlvl = 1;
+
+            try {
+                let admin = member.guild.roles.fetch(client.config.other.adminRole);
+
+                if (client.config.bot.managers.includes(member.id)) permissionlvl = 3;
+                else if (member.roles.cache.has(client.config.other.adminRole) || member.roles.highest.rawPosition >= admin.rawPosition) permissionlvl = 2;
+                else permissionlvl = 1;
+
+                return resolve(permissionlvl);
+            } catch (e) {
+                return reject(new Error(e.message));
+            }
+        })
+    }
+
+    client.fetchStats = async () => {
         return new Promise(async (resolve, reject) => {
-        const { managers, adminRole } = require("../config.json");
+            const fetch = require("node-fetch");
 
-        if (!user) reject(new Error("Missing argument in client.getPermlevel function! Argument: user"));
-        if (!guild) reject( new Error("Missing argument in client.getPermlevel function! Argument: guild"));
+            let fetchPI = await fetch("https://groups.roblox.com/v1/groups/4192306").then(res => res.json());
+            let fetchQS = await fetch("https://groups.roblox.com/v1/groups/2847031").then(res => res.json());
 
-        if (isNaN(Number(user))) reject(new Error("Argument user function client.getPermlevel must be an ID!"));
-        if (isNaN(Number(guild))) reject(new Error("Argument guild function client.getPermlevel must be an ID!"));
+            let fetchBHNPS = await fetch("https://games.roblox.com/v1/games/3657848528/servers/Public?sortOrder=Asc&limit=100").then(res => res.json());
+            let fetchQSERF = await fetch("https://games.roblox.com/v1/games/3039795291/servers/Public?sortOrder=Asc&limit=100").then(res => res.json());
 
-        let server = client.guilds.cache.get(guild);
-        if (!server) reject(new Error("Invalid guild specified in client.getPermlevel function!"));
+            let plBHNPS = 0;
+            let plQSERF = 0;
 
-        let admin = await server.roles.fetch(adminRole);
+            fetchBHNPS.data.forEach(r => plBHNPS += r.playing);
+            fetchQSERF.data.forEach(r => plQSERF += r.playing);
 
-        let member = await server.members.fetch(user);
+            let math = 0;
+            let major = "";
 
+            if (plBHNPS > plQSERF) {
+                math = (plBHNPS - plQSERF);
+                major = "plasma";
+            }
+            else if (plQSERF > plBHNPS) {
+                math = (plQSERF - plBHNPS);
+                major = "quantum";
+            } else {
+                math = 0;
+                major = "none"
+            }
 
-        if (managers.includes(user)) return resolve(3);
-        else if (member.roles.cache.has(admin) || member.roles.highest.rawPosition >= admin.rawPosition) return resolve(2);
-        else return resolve(1);
-    })
-    };
+            return resolve({
+                plasma: {
+                    group: fetchPI.memberCount,
+                    game: plBHNPS
+                },
+                quantum: {
+                    group: fetchQS.memberCount,
+                    game: plQSERF
+                },
+                gap: {
+                    group: fetchQS.memberCount - fetchPI.memberCount,
+                    game: math,
+                    majority: major
+                }
+            })
+        })
+    }
 }
