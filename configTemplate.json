@@ -1,9 +1,20 @@
 {
-    "token": "Token",
-    "prefix": "Prefix",
-    "welcomeChannel": "Channel ID (String)",
-    "starboardChannel": "Channel ID (String)",
-    "adminrRole": "Role ID (String)",
-    "managers": ["User ID (String)"],
-    "enhancedSecurity": false
+    "bot": {
+        "devmode": false,
+        "prefix": "%",
+        "managers": [
+            "1234567890",
+            "0987654321"
+        ],
+        "token": "lol no"
+    },
+    "channels": {
+        "counting": "73829476102",
+        "starboard": "1234567890",
+        "welcome": "1234567890"
+    },
+    "other": {
+        "adminRole": "123456789",
+        "enforceWhitelist": false
+    }
 }

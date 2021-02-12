@@ -34,19 +34,29 @@ Open the `configTemplate.json` file and fill in the values, **then rename it to 
 
 ```json
 {
-  "token": "Token of the bot that will be used",
-  "prefix": "Prefix for commands",
-  "welcomeChannel": "Channel where welcome messages are displayed",
-  "starboardChannel": "Channel where the starboard (pinned messages) are displayed",
-  "adminRole": "Role where admins get access to admin commands",
-  "managers": ["[ARRAY - STRING] Users who will have access to developer commands"],
-  "enhancedSecurity": "[BOOLEAN - TRUE/FALSE] Indicates whether strict security measures will be enforced"
+    "bot": {
+        "devmode": "(Boolean) Enable development mode [true/false]",
+        "prefix": "(String) Prefix for commands",
+        "managers": [
+          "(String/Array) User IDs for users who can run all commands"
+        ],
+        "token": "(String) Bot Token"
+    },
+    "channels": {
+        "counting": "(String) Channel ID where group stats are displayed",
+        "starboard": "(String) Channel ID where starred messages are sent",
+        "welcome": "(String) Channel ID where welcome messages are sent"
+    },
+    "other": {
+        "adminRole": "(String) Admin role ID to run higher commands",
+        "enforceWhitelist": "(Boolean) Enforce extra join security"
+    }
 }
 ```
 
 To install the required libraries, run (in the direrctory of the bot):
 
-```bash
+```
 npm i
 ```
 
