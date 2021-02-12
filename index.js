@@ -1,59 +1,23 @@
-// Node Modules
-const Discord = require("discord.js");
-
-// Discord Bot
-const client = new Discord.Client();
-const Sequelize = require("sequelize");
-
-// Configuration File
-const config = require(`./config.json`);
-
-// Modules
-require(`./modules/EventHandler`)(client);
-require(`./modules/logger`)(client);
-require(`./modules/emoji`)(client);
-require(`./modules/functions`)(client);
-
-
-// Command Handler
-const { CommandHandler } = require('./modules/CommandHandler');
-const CH = new CommandHandler({
-    folder: __dirname + "/commands/",
-    prefix: [config.prefix]
-});
-
-const sequelize = new Sequelize('database', 'user', 'password', {
-    host: 'localhost',
-    dialect: 'sqlite',
-    storage: 'database.sqlite',
-    logging: false,
-});
-
-const database = sequelize.define("starboard", {
-    id: {
-        type: Sequelize.STRING,
-        unique: true,
-        primaryKey: true
-    },
-    waitfor: {
-        type: Sequelize.INTEGER
-    }
-})
-
-const whitelist = sequelize.define("whitelist", {
-    id: {
-        type: Sequelize.STRING,
-        unique: true,
-        primaryKey: true
-    }
-})
+const { pqsClient } = require("./modules/client");
+const client = new pqsClient();
 
 // Exports
 module.exports = {
-    CH: CH,
     client: client,
-    database: database,
-    whitelist: whitelist
 }
+
+// Modules
+require("./modules/CommandHandler")(client);
+require(`./modules/EventHandler`)(client);
+require(`./modules/logger`)(client);
+require(`./modules/functions`)(client);
+
 // Login System
-client.login(config.token);
+switch (client.config.bot.devmode) {
+    case true:
+        client.login(client.config.bot.tokenDev);
+        break;
+    case false:
+        client.login(client.config.bot.token);
+        break;
+}
