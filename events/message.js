@@ -14,27 +14,31 @@ client.on("message", async message => {
 
   let args = message.content.split(" ");
 
-  let command = args[0];
+  if (message.author.bot) return;
 
-  let cmd = CH.getCommand(config.prefix, command.toLowerCase())
+  if (args[0].startsWith(client.prefix)) {
+    let cmd = client.commands.fetch(args[0].toLowerCase());
+    if (!cmd) return;
 
-  if (cmd) {
-    let getpl = await client.getPermlevel(message.author.id, message.guild.id);
-    if (cmd.settings.permlevel > getpl) {
-      return message.channel.send(`${client.emoji.cross} Fuck off, you aren't important enough to run this command! Keep sucking, you'll get there soon...`)
-    }
-
-    try {
-      cmd.run(client, message, args, config);
-    } catch (e) {
-      return message.channel.send(`${client.emoji.cross} It's all Diamond's fault that \`${cmd.settings.name}\` broke! Error Message: \`${e.message}\``);
-    }
-  };
+    client.commands.run(cmd.settings.name, message, message.member).catch(e => {
+      switch (e.message) {
+        case "Invalid permissions!":
+          message.channel.send(`keep sucking, you arent high enough`);
+          break;
+        case "Commands cannot be executed in DMs!":
+          message.channel.send(`bro dont try and run shit in dms`);
+          break;
+        default:
+          message.channel.send(`Darn! Diamond's caused some external interference again. Error: ${e.message}`);
+          break;
+      }
+    })
+  }
 
   reactioncruncher(message)
 
   async function reactioncruncher(message) {
-    database.create({
+    client.db.starboard.create({
       id: message.id,
       waitfor: 360000
     })
