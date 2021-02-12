@@ -1,26 +1,23 @@
 
 // Node Modules
 const fs = require("fs");
-const ts = require(`time-stamp`)
+const { client } = require("../index");
 
-// Imports
-const log = require(`./logger`)
-
-module.exports = (client) => {
+module.exports = () => {
     fs.readdir(`events`, (err, files) => {
-        if (err) console.log(err)
+        if (err) client.log.error(`An error occurred when trying to read the events folder! Errror: ${err}`);
         let jsfiles = files.filter(f => f.split(".").pop() === `js`)
 
-        // Check if any events were found
-        if (jsfiles.length <= 0) {
-            return logger.error(`\x1b[33m[LOGS] > No events found!`)
-        }
-        logger(`green`, `Loading ${jsfiles.length} events.\n`)
+        client.log.custom("EVT", "green", `Loading ${jsfiles.length} events`);
 
         // Event Loader
-        jsfiles.forEach((f, i) => {
-            require(`../events/${f}`)
-            logger(`green`, `Event '${f}' has loaded.`)
+        jsfiles.forEach(f => {
+            try {
+                require(`../events/${f}`);
+                client.log.custom("EVT", `green`, `Event '${f.replace(/.js/, '')}' has loaded`);
+            } catch (e) {
+                client.log.error(`Failed to load event '${f.replace(/.js/, '')}'. Reason: ${e.message}\n${e.stack}`);
+            }
         })
     })
 }
