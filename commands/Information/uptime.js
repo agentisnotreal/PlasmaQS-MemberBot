@@ -12,7 +12,7 @@ module.exports = class uptime {
             category: "Information"
         }
     }
-    run(client, message, args, config) {
-        return message.channel.send(`Unlike the garbage QUANTos, I maintain a perfect **100%** uptime.`)
+    run(client, message, args) {
+        return message.channel.send(`Doesn't matter, it's still better than Fozbot and QUANTos`);
     }
 }

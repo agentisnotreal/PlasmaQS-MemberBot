@@ -12,7 +12,7 @@ module.exports = class ping {
             category: "Information"
         }
     }
-    run(client, message, args, config) {
-        return message.channel.send(`I can tell you one thing about my ping. It's better than the #donothingdiamond's QUANTos.`)
+    run(client, message, args) {
+        return message.channel.send(`I can guarantee one thing, my ping annihilates that of #donothingdiamond's QUANTos ping`);
     }
 }
