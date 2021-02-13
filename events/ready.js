@@ -1,7 +1,3 @@
-// Node Modules
-const config = require(`../config.json`)
-const fetch = require(`node-fetch`)
-
 // Imports
 const { client } = require(`../index`);
 
@@ -31,24 +27,39 @@ client.on(`ready`, () => {
     client.user.setActivity(activities[index], { type: "WATCHING" })
   }, 120000);
 
-  setInterval(() => {
-    client.fetchStats().then(stats => {
-      let { MessageEmbed } = require("discord.js");
+  publishStats();
 
-      let emoji;
+  setInterval(() => {
+    publishStats();
+  }, 300000)
+
+  function publishStats() {
+    client.fetchStats().then(stats => {
+      let { MessageEmbed, WebhookClient } = require("discord.js");
+
+      let emoji, colour = "";
+      let gap = stats.gap.game
 
       if (stats.gap.majority === "plasma") emoji = client.emoji.plasma + " "
       else if (stats.gap.majority === "quantum") emoji = client.emoji.qs + " "
       else emoji = "";
 
+      if (gap === 0) colour = client.colour.grey
+      else if (gap < 5) colour = client.colour.red
+      else if (gap < 10) colour = client.colour.yellow
+      else if (gap < 50) colour = client.colour.purple
+      else if (gap < 100) colour = client.colour.blue
+      else colour = client.colour.green
+
       let info = new MessageEmbed()
-        .setColor("98ff98")
+        .setColor(colour)
         .addField("Group Members", `**Quantum Science:** ${stats.quantum.group}\n**Plasma Inc:** ${stats.plasma.group}`)
         .addField("Game Players", `**QSERF:** ${stats.quantum.game}\n**BHNPS:** ${stats.plasma.game}`)
-        .addField("Difference", `**Group:** ${stats.gap.group}\n**Games:** ${emoji}${stats.gap.game}`)
+        .addField("Difference", `**Group:** ${stats.gap.group}\n**Games:** ${emoji}${gap}`)
         .setTimestamp();
 
-      return client.channels.cache.get(client.config.channels.counting).send(info);
+      let webhook = new WebhookClient(client.config.other.webhook.id, client.config.other.webhook.token);
+      return webhook.send(info);
     })
-  }, 300000)
+  }
 })
