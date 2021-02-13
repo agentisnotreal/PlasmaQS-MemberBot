@@ -22,35 +22,12 @@ module.exports = class gamestatus {
 
         if (flag.toLowerCase() === "game") {
 
-            let b1 = await fetch(`https://games.roblox.com/v1/games/3657848528/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json());
-            let b2 = await fetch(`https://games.roblox.com/v1/games/3039795291/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json());
-            let b3 = await fetch(`https://games.roblox.com/v1/games/17541193/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json());
-            let b4 = await fetch(`https://games.roblox.com/v1/games/331811267/servers/Public?sortOrder=Asc&limit=100`).then(res => res.json());
+            let games = await fetch("https://games.roblox.com/v1/games?universeIds=1276997182%2C1096507818%2C31874845%2C123069416").then(res => res.json());
 
-            /*PLASMA - BHNPS*/
-            if (!b1) return;
-
-            let bhnpsPlaying = 0;
-            b1.data.forEach(r => bhnpsPlaying += r.playing);
-
-
-            /*QUANTUM - QSERF*/
-            if (!b2) return;
-
-            let qserfPlaying = 0;
-            b2.data.forEach(r => qserfPlaying += r.playing);
-
-            /*PINEWOOD - PBCC*/
-            if (!b3) return;
-
-            let pbccPlaying = 0;
-            b3.data.forEach(r => pbccPlaying += r.playing);
-
-            /*INNOVATION - SPACESHIP*/
-            if (!b4) return;
-
-            let iisPlaying = 0;
-            b4.data.forEach(r => iisPlaying += r.playing);
+            let bhnpsPlaying = games.data[0].playing;
+            let qserfPlaying = games.data[1].playing;
+            let pbccPlaying = games.data[2].playing;
+            let iisPlaying = games.data[3].playing;
 
             let info = new MessageEmbed()
                 .setAuthor(`Game Statistics`, client.user.avatarURL({ size: 2048, format: "png" }))

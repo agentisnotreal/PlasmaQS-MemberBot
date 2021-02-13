@@ -15,18 +15,17 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
             .setThumbnail(messageReaction.message.author.avatarURL({ format: "png", size: 2048, dynamic: true }))
             .addField("Channel", messageReaction.message.channel, true)
             .addField("Message", `[here](${messageReaction.message.url})`, true)
-            .setDescription(`${messageReaction.message.content}`)
+            .setDescription(messageReaction.message.content);
 
-        var image = messageReaction.message.attachments.array();
+        let image = messageReaction.message.attachments.array();
         if (image && image.length) {
-            let imageurl = image[0].url
-            let attachembed = embed.setImage(`${imageurl}`)
-            channel.send(attachembed)
-
-            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
+            channel.send(embed.setImage(image[0].url));
+            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e));
+            return;
         } else {
-            channel.send(embed)
-            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e))
+            channel.send(embed);
+            await client.db.starboard.destroy({ where: { id: messageReaction.message.id } }).catch(e => console.error(e));
+            return;
         }
     }
 })

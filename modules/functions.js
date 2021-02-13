@@ -26,14 +26,10 @@ module.exports = client => {
             let fetchPI = await fetch("https://groups.roblox.com/v1/groups/4192306").then(res => res.json());
             let fetchQS = await fetch("https://groups.roblox.com/v1/groups/2847031").then(res => res.json());
 
-            let fetchBHNPS = await fetch("https://games.roblox.com/v1/games/3657848528/servers/Public?sortOrder=Asc&limit=100").then(res => res.json());
-            let fetchQSERF = await fetch("https://games.roblox.com/v1/games/3039795291/servers/Public?sortOrder=Asc&limit=100").then(res => res.json());
+            let fetchGames = await fetch("https://games.roblox.com/v1/games?universeIds=1276997182%2C1096507818").then(res => res.json());
 
-            let plBHNPS = 0;
-            let plQSERF = 0;
-
-            fetchBHNPS.data.forEach(r => plBHNPS += r.playing);
-            fetchQSERF.data.forEach(r => plQSERF += r.playing);
+            let plBHNPS = fetchGames.data[0].playing;
+            let plQSERF = fetchGames.data[1].playing;
 
             let math = 0;
             let major = "";
@@ -41,8 +37,7 @@ module.exports = client => {
             if (plBHNPS > plQSERF) {
                 math = (plBHNPS - plQSERF);
                 major = "plasma";
-            }
-            else if (plQSERF > plBHNPS) {
+            } else if (plQSERF > plBHNPS) {
                 math = (plQSERF - plBHNPS);
                 major = "quantum";
             } else {
