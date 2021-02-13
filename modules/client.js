@@ -16,6 +16,7 @@ class pqsClient extends Client {
         // Client Variables
         this.devmode = false;
         this.emoji = require("../assets/emoji.json");
+        this.colour = require("../assets/colours.json");
         this.log = pqsClient.logger;
 
         this.commands = new Map();

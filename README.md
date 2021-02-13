@@ -43,13 +43,16 @@ Open the `configTemplate.json` file and fill in the values, **then rename it to 
         "token": "(String) Bot Token"
     },
     "channels": {
-        "counting": "(String) Channel ID where group stats are displayed",
         "starboard": "(String) Channel ID where starred messages are sent",
         "welcome": "(String) Channel ID where welcome messages are sent"
     },
     "other": {
         "adminRole": "(String) Admin role ID to run higher commands",
-        "enforceWhitelist": "(Boolean) Enforce extra join security"
+        "enforceWhitelist": "(Boolean) Enforce extra join security",
+        "webhook": {
+          "id": "(String) Webhook ID",
+          "token": "(String) Webhook Token"
+        }
     }
 }
 ```

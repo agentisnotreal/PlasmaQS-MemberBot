@@ -9,8 +9,8 @@ module.exports = {
 // Modules
 require("./modules/CommandHandler")(client);
 require(`./modules/EventHandler`)(client);
-require(`./modules/logger`)(client);
-require(`./modules/functions`)(client);
+
+require("./modules/functions")(client);
 
 // Login System
 switch (client.config.bot.devmode) {

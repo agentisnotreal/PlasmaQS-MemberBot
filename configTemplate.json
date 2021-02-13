@@ -9,12 +9,15 @@
         "token": "lol no"
     },
     "channels": {
-        "counting": "73829476102",
         "starboard": "1234567890",
         "welcome": "1234567890"
     },
     "other": {
         "adminRole": "123456789",
-        "enforceWhitelist": false
+        "enforceWhitelist": false,
+        "webhook": {
+            "id": "1234567890",
+            "token": "lol no"
+        }
     }
 }
